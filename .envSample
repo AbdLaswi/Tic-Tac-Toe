@@ -1,0 +1,17 @@
+### APP ###
+PORT=3000
+NODE_ENV=eDev
+
+### DATABASE ###
+DB_HOST=localhost
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
+DB_NAME=game
+DB_PORT= 5432
+
+### JWT ###
+TOKEN_EXPIRATION=1d
+SECRET=game-dev-secret
+
+### BCRYPT ###
+SALT=10

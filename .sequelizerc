@@ -1,0 +1,11 @@
+const path = require('path');
+const { app } = require('./src/config');
+
+const { env } = app
+
+module.exports = {
+	'env': env,
+	'config': path.resolve(__dirname, 'deployment/config.js'),
+	'migrations-path': path.resolve(__dirname, 'deployment/migrations'),
+	'seeders-path': path.resolve(__dirname, 'deployment/seeders'),
+};
