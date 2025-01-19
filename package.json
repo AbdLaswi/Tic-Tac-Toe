@@ -7,13 +7,12 @@
     "db:create": "npx sequelize-cli db:create",
     "db:migrate": "node src/models/index.js",
     "start:dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "start:firstClient": "nodemon simulator/client.js",
+    "start:secClient": "nodemon simulator/sec-client.js",
     "lint": "eslint ./src --fix",
     "test": "npm test",
-    "docker:startApp": "node src/index.js",
-    "docker:build": "docker build .",
-    "docker:up": "docker-compose --env-file ./docker.env up",
-    "docker:down": "docker-compose --env-file ./docker.env down",
-    "docker:config": "docker-compose --env-file ./docker.env config"
+    "docker:build": "docker build ."
   },
   "repository": {
     "type": "git",
@@ -56,6 +55,7 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jest": "^27.2.1",
     "eslint-plugin-prettier": "^4.2.1",
+    "socket.io-client": "^4.8.1",
     "prettier": "^2.8.4"
   }
 }
