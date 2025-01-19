@@ -24,7 +24,8 @@ module.exports = function GamePlayer(sequelize, DataTypes) {
       }
     },
     {
-      tableName: 'game_player'
+      tableName: 'game_player',
+      timestamps: false
     }
   );
   GamePlayer.associate = model => {

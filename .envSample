@@ -1,6 +1,6 @@
 ### APP ###
 PORT=3000
-NODE_ENV=eDev
+NODE_ENV=Dev
 
 ### DATABASE ###
 DB_HOST=localhost
@@ -15,3 +15,8 @@ SECRET=game-dev-secret
 
 ### BCRYPT ###
 SALT=10
+
+### Redis ###
+REDIS_HOST=localhost
+USER_TTL=21600
+GAME_TTL=3000

@@ -55,10 +55,6 @@ module.exports = function Game(sequelize, DataTypes) {
       foreignKey: 'creatorId',
       targetKey: 'id'
     });
-    Game.hasMany(model.GameHistory, {
-      foreignKey: 'gameId',
-      targetKey: 'id'
-    });
     Game.hasMany(model.GamePlayer, {
       foreignKey: 'gameId',
       targetKey: 'id'

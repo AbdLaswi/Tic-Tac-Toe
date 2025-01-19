@@ -1,13 +1,8 @@
-const status = {
-  CONSUMED: 'CONSUMED',
-  EXPIRED: 'EXPIRED',
-  ACTIVE: 'ACTIVE',
-  INACTIVE: 'INACTIVE'
+const gameStatuses = {
+  NEW: 'NEW',
+  STARTED: 'STARTED',
+  INPROGRESS: 'IN_PROGRESS',
+  FINISHED: 'FINISHED'
 };
 
-const userRole = {
-  USER: 'USER',
-  ADMIN: 'ADMIN'
-};
-
-module.exports = { status, userRole };
+module.exports = { gameStatuses };

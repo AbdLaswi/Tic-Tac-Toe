@@ -27,6 +27,11 @@ const config = {
   },
   bcrypt: {
     salt: Number(process.env.SALT)
+  },
+  redis: {
+    host: process.env.REDIS_HOST,
+    userTTL: process.env.USER_TTL,
+    gameTTL: process.env.GAME_TTL
   }
 };
 

@@ -139,6 +139,7 @@ async function createGamePlayerTable(queryInterface, Sequelize, transaction) {
           model: 'game',
           key: 'id'
         },
+        field: 'game_id',
         onDelete: 'CASCADE'
       }
     },
@@ -147,45 +148,6 @@ async function createGamePlayerTable(queryInterface, Sequelize, transaction) {
   await queryInterface.addIndex('game_player', ['id'], { transaction });
   await queryInterface.addIndex('game_player', ['gameId'], { transaction });
 }
-
-async function createGameHistoryTable(queryInterface, Sequelize, transaction) {
-  await queryInterface.createTable(
-    'game_history',
-    {
-      id: {
-        type: Sequelize.UUID,
-        primaryKey: true,
-        defaultValue: Sequelize.UUIDV4
-      },
-      result: {
-        type: Sequelize.JSON,
-        allowNull: false
-      },
-      gameId: {
-        type: Sequelize.UUID,
-        references: {
-          model: 'game',
-          key: 'id'
-        },
-        onDelete: 'CASCADE'
-      },
-      createdAt: {
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW,
-        field: 'created_at'
-      },
-      updatedAt: {
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW,
-        field: 'updated_at'
-      }
-    },
-    { transaction }
-  );
-  await queryInterface.addIndex('game_history', ['id'], { transaction });
-  await queryInterface.addIndex('game_history', ['gameId'], { transaction });
-}
-
 module.exports = {
   async up(queryInterface, Sequelize) {
     const transaction = await queryInterface.sequelize.transaction();
@@ -193,7 +155,6 @@ module.exports = {
       await createUserTable(queryInterface, Sequelize, transaction);
       await createGameTable(queryInterface, Sequelize, transaction);
       await createGamePlayerTable(queryInterface, Sequelize, transaction);
-      await createGameHistoryTable(queryInterface, Sequelize, transaction);
       await transaction.commit();
     } catch (error) {
       console.log(JSON.stringify(error));
