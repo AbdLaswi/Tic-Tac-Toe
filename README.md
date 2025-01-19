@@ -1,7 +1,7 @@
 # Tic-Tac-Toe
 
 ## **Pre-requirement**:
-    - NodeJS 20.13
+    - NodeJS 22.13
     - Redis
     - Docker
     - Postgresql
