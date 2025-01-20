@@ -3,7 +3,7 @@ const { getWinner, playerMoved, getNextPlayerTurn, getPlayers } = require('../he
 const { gameService, gamePlayerService } = require('../../service');
 const { gameStatuses } = require('../../config/constants');
 const { redis } = require('../../config');
-const { error } = require('../../utils');
+const { error, logger } = require('../../utils');
 
 async function gameValidation(roomId, pubClient, status) {
   const options = status ? { status } : {};
