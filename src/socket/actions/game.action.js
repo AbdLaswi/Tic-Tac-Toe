@@ -245,12 +245,59 @@ function onLeavingRoom(socket, pubClient) {
   });
 }
 
+function onLosingConnection(socket, pubClient) {
+  socket.on('disconnect', async reason => {
+    try {
+      const { user } = socket;
+
+      const options = {
+        where: {
+          status: gameStatuses.INPROGRESS
+        }
+      };
+
+      const games = await gameService.listUserGames(options, user.id);
+
+      for await (const game of games) {
+        const roomId = game.id;
+        const cachedGame = await pubClient.get(`Room_${roomId}`);
+        if (game.status === gameStatuses.INPROGRESS) {
+          const leftPlayer =
+            user.id === cachedGame.firstPlayer ? cachedGame.firstPlayer : cachedGame.secPlayer;
+          const wonPlayer =
+            user.id !== cachedGame.firstPlayer ? cachedGame.firstPlayer : cachedGame.secPlayer;
+          const result = `Player Left: ${leftPlayer}, the winner is ${wonPlayer}`;
+          const updatedField = {
+            status: gameStatuses.FINISHED,
+            result: {
+              moves: cachedGame.moveHistory,
+              result
+            },
+            endedAt: new Date().toJSON()
+          };
+          await gameService.updateGame(game.id, updatedField);
+
+          socket.emit('gameFinished', { roomId, result, board: game.board });
+        } else {
+          socket.id.leave(roomId);
+          socket.emit('playerLeft', { roomId, playerId: user.id });
+        }
+      }
+      logger.info(`player disconnected for this reason: ${reason}`);
+    } catch (err) {
+      const errMessage = err.message || 'An unexpected error occurred';
+      socket.emit('error', { message: errMessage });
+    }
+  });
+}
+
 module.exports = (socket, io, pubClient) => {
   onNotifyPlayer(socket, io, pubClient);
   onStartingGame(socket, io, pubClient);
+  onLosingConnection(socket, pubClient);
   onClosingRoom(socket, io, pubClient);
   onLeavingRoom(socket, io, pubClient);
+  onMakingMove(socket, io, pubClient);
   onJoinGame(socket, io, pubClient);
   onCreatingGame(socket, pubClient);
-  onMakingMove(socket, io, pubClient);
 };
