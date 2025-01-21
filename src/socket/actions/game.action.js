@@ -96,7 +96,7 @@ function onStartingGame(socket, io, pubClient) {
         EX: redis.gameTTL
       });
 
-      socket.emit('gameStarted', { roomId: game.id, board: cachedGame.board });
+      socket.emit('gameStarted', { roomId: game.id });
     } catch (err) {
       const errMessage = err.message || 'An unexpected error occurred';
       socket.emit('error', { message: errMessage });
@@ -133,7 +133,6 @@ function onNotifyPlayer(socket, io, pubClient) {
 function onMakingMove(socket, io, pubClient) {
   socket.on('makeMove', async data => {
     try {
-      // TODO: in readme file, make all objects clear
       const { roomId, move } = data;
 
       if (!roomId) throw error.badRequestError('Room ID is required');
@@ -163,6 +162,7 @@ function onMakingMove(socket, io, pubClient) {
 
         firstPlayer.emit('gameFinished', { roomId: game.id, result, board: cachedGame.board });
         secPlayer.emit('gameFinished', { roomId: game.id, result, board: cachedGame.board });
+        socket.emit('gameFinished', { roomId: game.id, result, board: cachedGame.board });
       } else {
         await pubClient.set(`Room_${game.id}`, JSON.stringify(cachedGame), {
           EX: redis.gameTTL
