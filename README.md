@@ -16,7 +16,7 @@ Run the following command to install all required dependencies:
 npm install
 ```
 
-## **Start the Application**:
+## **Start the Application**
 
 **Locally**
 
