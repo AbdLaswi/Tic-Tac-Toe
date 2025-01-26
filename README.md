@@ -19,6 +19,7 @@ npm install
 ## **Start the Application**:
 
 **Locally**
+
 Run the following command to start the app in development mode:
 
 ```bash
@@ -26,6 +27,7 @@ npm run start:dev
 ```
 
 **On Production**
+
 Run the following command to start the app in production mode:
 
 ```bash
@@ -33,6 +35,7 @@ npm run start
 ```
 
 **Debugging**
+
 To debug the application, press `F5` in your debugger environment.
 
 
@@ -59,7 +62,7 @@ Run the following commands to start the simulators:
 The second client must start first as it initiates the game.
 If the first client starts before the second, you may see a message: "player is not online yet". Once the second client connects, restart the server to reinitialize the simulation.
 
-## **Unit Tests:**
+## **Unit Tests**
 To run unit tests, use the following command:
 
 ```bash
@@ -68,7 +71,7 @@ To run unit tests, use the following command:
 Alternatively, select Debug Jest Tests from the debugger menu.
 
 
-## **Features:**
+## **Features**
 
 The application supports the following events:
 
@@ -85,7 +88,7 @@ The application supports the following events:
 - Allow players to view their game history and review each move.
 - Create an account and log in.
 
-**About the App:**
+**About the App**
 
 - The app uses JWT for authentication.
 - The app uses Redis to store game information (short-term) with a cache duration of 10 minutes, which renews on every move.
@@ -93,7 +96,7 @@ The application supports the following events:
 - The logs folder contains two files simulating cloud logging services like CloudWatch or Loggly.
 - The app uses both Socket.IO and Express.js to serve players based on business needs.
 
-## **App structure:**
+## **App structure**
 .
 ├── Dockerfile
 ├── README.md
