@@ -11,7 +11,10 @@
     "start:firstClient": "nodemon simulator/client.js",
     "start:secClient": "nodemon simulator/sec-client.js",
     "lint": "eslint ./src --fix",
-    "test": "npm test",
+    "test": "jest",
+    "test:unit": "jest --selectProjects unit",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "docker:build": "docker build ."
   },
   "repository": {
@@ -39,23 +42,26 @@
     "express": "^4.21.2",
     "http-status-codes": "^2.3.0",
     "husky": "^9.1.7",
-    "jest": "^29.7.0",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.13.1",
     "redis": "^4.7.0",
     "sequelize": "^6.37.5",
-    "sequelize-cli": "^6.6.2",
     "socket.io": "^4.8.1",
     "winston": "^3.17.0"
   },
   "devDependencies": {
+    "sequelize-cli": "^6.6.2",
+    "@types/jest": "^29.5.14",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jest": "^27.2.1",
+    "eslint-plugin-jest": "^27.9.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.7.0",
+    "prettier": "^2.8.4",
+    "redis-mock": "^0.56.3",
     "socket.io-client": "^4.8.1",
-    "prettier": "^2.8.4"
+    "supertest": "^7.0.0"
   }
 }

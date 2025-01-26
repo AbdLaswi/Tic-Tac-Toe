@@ -49,6 +49,12 @@ run the server, then run the following commands to start the simulator:
 you need to run the second client first, as it is the one who will be invited to the game.
 don't worry if you start the first client first, you will get "player is not online yet", but when the sec client is online you will have to restart the server as this simulator does not have UI to re-invoke the client when the player becomes online.
 
+if you want to run the app test, simply use the following command:
+
+```bash
+    npm run start:unit
+```
+or from debugger menu use: **Debug Jest Tests**
 
 ## **Features:**
 
