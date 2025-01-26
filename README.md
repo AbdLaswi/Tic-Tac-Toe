@@ -21,8 +21,6 @@ npm install
 **Locally**
 Run the following command to start the app in development mode:
 
-Run the following command to start the app in development mode:
-
 ```bash
 npm run start:dev
 ```
