@@ -38,6 +38,7 @@ npm run start
 
 To debug the application, press `F5` in your debugger environment.
 
+---
 
 ## **Testing the App**
 This is a real-time application, so two clients must run simultaneously to interact with the server. A simulator folder is provided to mimic the user experience without a UI.
@@ -70,6 +71,7 @@ To run unit tests, use the following command:
 ```
 Alternatively, select Debug Jest Tests from the debugger menu.
 
+---
 
 ## **Features**
 
