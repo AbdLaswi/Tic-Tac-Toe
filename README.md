@@ -1,42 +1,52 @@
-# Tic-Tac-Toe
+# Tic-Tac-Toe Application
 
-## **Pre-requirement**:
-    - NodeJS 22.13
-    - Redis
-    - Docker
-    - Postgresql
+## Pre-requisites
+- Node.js: v22.13
+- Redis
+- Docker
+- PostgreSQL
 
-## **INITIALIZING AND RUNNING THE APPS**:
+---
 
-```bash 
-    npm install
+## Initializing and Running the App
+
+### Install Dependencies
+Run the following command to install all required dependencies:
+```bash
+npm install
 ```
 
-you can run the app by the Terminal or using debugger.
+## **Start the Application**:
 
-if you want to run the app using Terminal, use the following command:
+**Locally**
+Run the following command to start the app in development mode:
 
-**Locally:**
+Run the following command to start the app in development mode:
 
-```bash 
-    npm run start:dev
+```bash
+npm run start:dev
 ```
 
-**On Production:**
+**On Production**
+Run the following command to start the app in production mode:
 
-```bash 
-    npm run start
+```bash
+npm run start
 ```
-If you want to run the app using debugger, press F5.
+
+**Debugging**
+To debug the application, press `F5` in your debugger environment.
 
 
-## **Test The App:**
+## **Testing the App**
+This is a real-time application, so two clients must run simultaneously to interact with the server. A simulator folder is provided to mimic the user experience without a UI.
 
-as this a realtime application, we need to clients to run at the same time and talks to the server, for that reason you will find a simulator folder that will simulate the user experience **without UI**, and inside each folder you will find 3 arrays 2 of them are commented out, and the default result of the game of the simulator now is **Draw**, you can change it up by uncommenting the winning for X or O and commenting the coordinates that gives a draw as result.
-
-To start trying the app: 
-
-run the server, then run the following commands to start the simulator:
+Simulator Instructions
+Start the server.
+Navigate to the simulator folder and adjust the simulation as needed. Three pre-configured arrays determine the game's result:
+Default: Draw.
+Uncomment relevant sections for X Wins or O Wins.
+Run the following commands to start the simulators:
 
 ```bash
     npm run start:firstClient
@@ -46,40 +56,44 @@ run the server, then run the following commands to start the simulator:
     npm run start:secClient
 ```
 
-you need to run the second client first, as it is the one who will be invited to the game.
-don't worry if you start the first client first, you will get "player is not online yet", but when the sec client is online you will have to restart the server as this simulator does not have UI to re-invoke the client when the player becomes online.
+**Note:**
 
-if you want to run the app test, simply use the following command:
+The second client must start first as it initiates the game.
+If the first client starts before the second, you may see a message: "player is not online yet". Once the second client connects, restart the server to reinitialize the simulation.
+
+## **Unit Tests:**
+To run unit tests, use the following command:
 
 ```bash
     npm run start:unit
 ```
-or from debugger menu use: **Debug Jest Tests**
+Alternatively, select Debug Jest Tests from the debugger menu.
+
 
 ## **Features:**
 
-The app supports the following events: 
+The application supports the following events:
 
-- create game
-- notify other players to join
-- notify admin on other player's joining
-- wait inside the room/lobby 'till the admin starts the game.
-- allow the player to leave the lobby.
-- game logic (make moves)
-- close the room/lobby
-- join the room/lobby
-- store the games inside the database. 
-- allow the player to see other player's accounts. 
-- allow the player to see his games history, and check each move that has been made at the time.
-- create an account, and login.
+- Create game.
+- Notify other players to join.
+- Notify the admin when other players join.
+- Wait in the lobby until the admin starts the game.
+- Allow players to leave the lobby.
+- Handle game logic (make moves).
+- Close the room or lobby.
+- Join the room or lobby.
+- Store games in the database.
+- Allow players to view other players' accounts.
+- Allow players to view their game history and review each move.
+- Create an account and log in.
 
 **About the App:**
-- the app is using JWT for authentication.
-- the app is using redis to store the game information(short-term), and the data is being cached for 10 mins(can be changed) renewed on every move.
-- the app is using postgresql to store the game information(long-term), and user information.
-- under logs folder, you will find two files to simulate the cloudwatch/Loggly works.
-- the app is using both socket.io and ExpressJs to serve the player based on the business needs.
 
+- The app uses JWT for authentication.
+- The app uses Redis to store game information (short-term) with a cache duration of 10 minutes, which renews on every move.
+- The app uses PostgreSQL to store game information (long-term) and user information.
+- The logs folder contains two files simulating cloud logging services like CloudWatch or Loggly.
+- The app uses both Socket.IO and Express.js to serve players based on business needs.
 
 ## **App structure:**
 .
