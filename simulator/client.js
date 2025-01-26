@@ -6,6 +6,7 @@ const SERVER_URL = 'http://localhost:3000';
 const JWT_TOKEN =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdiZjVmMGZkLTk3YjEtNGRhMi1hZTdkLWU2ZWNmNDI3YzJlMSIsInVzZXJuYW1lIjoibGFzd2kiLCJpYXQiOjE3MzcyNDIxNDgsImV4cCI6MTczNzMyODU0OH0.nHckRVnUTVDVRBoxeqtexCiUHh0fwW1yuE3zLEAFFHA';
 
+const notifiedPlayer = 'dfa52a5a-b76e-457a-a85c-bc5928690c12';
 let currentMove = 0;
 // X Wins
 // const playerMoves = [
@@ -58,7 +59,7 @@ socket.on('connect', () => {
     const roomId = data.roomId;
     socket.emit('notifyPlayer', {
       roomId,
-      playerId: 'dfa52a5a-b76e-457a-a85c-bc5928690c12'
+      playerId: notifiedPlayer
     });
     console.log(`Room created successfully: ${data.roomId}`);
   });

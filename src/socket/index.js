@@ -13,11 +13,6 @@ module.exports = io => {
     socketErrorHandler(socket);
     gameActions(socket, io, pubClient);
 
-    socket.on('disconnect', async reason => {
-      await pubClient.del(socket.user.id);
-      logger.info(`Client disconnected: ${socket.id}, Reason: ${reason}`);
-    });
-
     socket.on('connect_error', error => {
       logger.error(`Connection error for socket ${socket.id}: ${JSON.stringify(error)}`);
     });
